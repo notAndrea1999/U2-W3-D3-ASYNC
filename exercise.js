@@ -18,12 +18,12 @@ fetch("https://striveschool-api.herokuapp.com/books")
     </div>`;
       row.appendChild(col);
 
-      const buyBooks = (book) => {
-        const libroComprato = document.createElement("p");
-        const carrello = document.querySelector(".dropdown-menu");
-        carrello.appendChild(libroComprato);
-        libroComprato.innerHTML = `${book.title}`;
-      };
+      //   const buyBooks = (event) => {
+      //     const libroComprato = document.createElement("p");
+      //     const carrello = document.querySelector(".dropdown-menu");
+      //     carrello.appendChild(libroComprato);
+      //     libroComprato.innerHTML = `${book.title}`;
+      //   };
 
       //   const compra = document.getElementById("compra");
       //   compra.addEventListener("click", (book) => {
