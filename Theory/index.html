@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row row-cols-2 row-cols-md-5 justify-content-center gy-2">
+        <!-- cols will be created here -->
+      </div>
+    </div>
+
+    <script>
+      // fetch("https://randomuser.me/api/?results=5", { method: "GET" }) // il metodo get è il default se non specificato
+      fetch("https://randomuser.me/api/?results=5")
+        .then((responseObj) => responseObj.json())
+        .then((usersObj) => {
+          // QUI e SOLO QUI possiamo manipolare il DOM sapendo che il dato è effettivamente arrivato e disponibile
+
+          const row = document.querySelector(".row");
+
+          usersObj.results.forEach((user) => {
+            const name = user.name.first + " " + user.name.last;
+
+            const col = document.createElement("div");
+            col.className = "col";
+
+            col.innerHTML = `<div class="card">
+                                        <img src=${user.picture.large} class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${name}</h5>
+                                            <p class="card-text">${user.email}</p>
+                                            <a href="#" class="btn btn-primary">${user.phone}</a>
+                                        </div>
+                                    </div>
+                    `;
+
+            row.appendChild(col);
+          });
+        })
+        .catch((error) => console.log(error));
+    </script>
+    <!-- <script src="arr-methods.js"></script> -->
+    <!-- <script src="promise.js"></script> -->
+  </body>
+</html>
